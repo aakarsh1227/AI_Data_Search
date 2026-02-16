@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Data Analyst</title>
+    <style>
+        body { font-family: sans-serif; max-width: 700px; margin: 50px auto; text-align: center; }
+        input { width: 70%; padding: 12px; font-size: 16px; }
+        button { padding: 12px 20px; font-size: 16px; cursor: pointer; }
+        .result { margin-top: 30px; padding: 20px; background: #f4f4f4; border-radius: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Ask the Company Database</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="query" placeholder="e.g. Which company has the most employees?" value="{{ query }}">
+        <button type="submit">Ask AI</button>
+    </form>
+
+    {% if answer %}
+    <div class="result">
+        <h3>Best Match:</h3>
+        <p>{{ answer }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
